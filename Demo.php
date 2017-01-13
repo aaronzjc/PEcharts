@@ -9,6 +9,10 @@ $data = $option->title([
     $series->data(function($data) {
         $data->name = 'series-data';
     });
-})->getArray();
+})->series(function($series) {
+    $series->type = 'bar';
+})->legend()->getJson();
 
-var_export($data);
+echo $data;
+
+//var_export($data);
