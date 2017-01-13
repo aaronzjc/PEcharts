@@ -11,4 +11,4 @@ $data = $option->title([
     });
 })->getArray();
 
-print_r($data);
+var_export($data);
