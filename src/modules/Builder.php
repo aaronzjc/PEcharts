@@ -1,5 +1,5 @@
 <?php
-namespace modules;
+namespace PEcharts\modules;
 
 class Builder {
     public $data = [];

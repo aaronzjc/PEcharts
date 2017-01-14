@@ -1,5 +1,5 @@
 <?php
-namespace modules;
+namespace PEcharts\modules;
 
 class Series extends Handler {
     public function __construct() {

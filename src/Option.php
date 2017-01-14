@@ -1,5 +1,7 @@
 <?php
 
+namespace PEcharts;
+
 class Option {
 
     public $option = []; // 最终属性

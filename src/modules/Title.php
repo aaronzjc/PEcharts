@@ -1,5 +1,5 @@
 <?php
-namespace modules;
+namespace PEcharts\modules;
 
 class Title extends Handler {
     public function __construct() {
