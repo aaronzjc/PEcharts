@@ -8,7 +8,7 @@ $data = $option->title([
     $series->type = 'pie';
     $series->data(function($data) {
         $data->name = 'series-data';
-    });
+    }, true);
 })->series(function($series) {
     $series->type = 'bar';
 })->legend()->getJson();

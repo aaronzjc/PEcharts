@@ -44,6 +44,7 @@ class Handler {
             } elseif ($args[0] instanceof \Closure) {
                 // 如果是闭包,则走闭包吧.
                 $this->closureHandle($args[0]);
+
             }
         }
 

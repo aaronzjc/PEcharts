@@ -16,11 +16,19 @@ class Builder {
 
     public function __call($name, $args) {
         $m = $args[0];
+        $f = $args[1];
 
         // 闭包,则继续深入执行.
         if ($m instanceof \Closure) {
             $builder = new self();
-            $builder->data = & $this->data[$name];
+            if ($f === true) {
+                $data = $this->data[$name]?:[];
+                $index = isset($data)?count($data):0;
+                $builder->data = & $this->data[$name][$index];
+            } else {
+                $builder->data = & $this->data[$name];
+            }
+
             $m($builder);
         }
 
