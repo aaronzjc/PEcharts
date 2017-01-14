@@ -1,5 +1,4 @@
 <?php
-
 namespace PEcharts;
 
 class Option {
