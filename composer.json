@@ -3,7 +3,6 @@
     "descrption": "Convenient tool to generate ECharts Options.",
     "license": "MIT",
     "keywords": ["echarts"],
-    "version": "1.0.0",
     "authors": [
         {
           "name": "Jincheng Zhang",
