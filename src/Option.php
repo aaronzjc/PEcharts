@@ -9,11 +9,11 @@ class Option {
      * 超级入口
      */
     public function __call($name, $args) {
-        $className = "modules\\".ucfirst($name);
+        $className = "PEcharts\\modules\\".ucfirst($name);
 
         // 如果不存在,则调用父类方法进行处理.
         if(!class_exists($className, false)) {
-            $className = "modules\\Handler";
+            $className = "PEcharts\\modules\\Handler";
         }
 
         $class = new $className();

@@ -1,7 +1,7 @@
 <?php
 spl_autoload_register();
 
-$option = new Option();
+$option = new \PEcharts\Option();
 $data = $option->title([
     'text' => '标题'
 ])->series(function($series) {
