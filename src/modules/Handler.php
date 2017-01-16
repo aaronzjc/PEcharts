@@ -7,6 +7,10 @@ class Handler {
     public function __construct() {
     }
 
+    public function sugarHandle($params) {
+        // TODO
+    }
+
     /**
      * 数组处理,这里就当做直接赋值.后期可以改进.
      *
@@ -33,19 +37,22 @@ class Handler {
      * @return array
      */
     public function get($args) {
-        // 如果参数大于1,则启动自定义处理模式.
-        if (count($args) > 1) {
-            $this->sugarHandle($args);
-        } else {
-            // 参数是数组,则应该是直接赋值option.
-            if (is_array($args[0])) {
-                // 数组处理
-                $this->arrayHandle($args[0]);
-            } elseif ($args[0] instanceof \Closure) {
-                // 如果是闭包,则走闭包吧.
-                $this->closureHandle($args[0]);
+        $r = $args[0]; // route...
 
-            }
+        /**
+         * 1. 第一个参数为string,启用sugar方法进行处理
+         * 2. 第一个参数为数组,启用array方法进行处理
+         * 3. 第一个参数为closure,启用closure方法进行处理
+         */
+        switch(gettype($r)) {
+            // case 'string':$this->sugarHandle($args);break;
+            case 'array':$this->arrayHandle($r);break;
+            case 'object':
+                if ($r instanceof \Closure) {
+                    $this->closureHandle($r);
+                };
+                break;
+            default:$this->sugarHandle($args);break;
         }
 
         return $this->data;

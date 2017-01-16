@@ -1,18 +1,21 @@
 <?php
-spl_autoload_register();
+//spl_autoload_register(function ($class) {
+//    set_include_path(".");
+//});
+
+include("src/Option.php");
+include("src/modules/Builder.php");
+include("src/modules/Handler.php");
 
 $option = new \PEcharts\Option();
-$data = $option->title([
-    'text' => '标题'
-])->series(function($series) {
-    $series->type = 'pie';
-    $series->data(function($data) {
-        $data->name = 'series-data';
+$data = $option->init(function($option) {
+    $option->title = ['text' => '标题'];
+    $option->series(function ($series) {
+        $series->type = 'bar';
+    }, true)->series(function ($series) {
+        $series->type = 'line';
     }, true);
-})->series(function($series) {
-    $series->type = 'bar';
-})->legend()->getJson();
-
+})->getJson();
 echo $data;
 
 //var_export($data);

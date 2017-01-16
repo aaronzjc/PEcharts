@@ -16,7 +16,7 @@ class Builder {
 
     public function __call($name, $args) {
         $m = $args[0];
-        $f = $args[1];
+        $f = isset($args[1])?true:false;
 
         // 闭包,则继续深入执行.
         if ($m instanceof \Closure) {
