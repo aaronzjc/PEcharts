@@ -17,8 +17,6 @@
         * ...
     * Demo.php
     * Option.php
-    
-Option依然是入口类.我将Option的第一层对象,即title,series,legend等,拆分出来了,作为单独的对象进行处理.这样方便区别对待title,series等参数.
 
 ## 安装
 
