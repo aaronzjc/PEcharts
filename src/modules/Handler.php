@@ -2,7 +2,7 @@
 namespace PEcharts\modules;
 
 class Handler {
-    public $data;
+    public $_option = [];
 
     public function __construct() {
     }
@@ -17,7 +17,7 @@ class Handler {
      * @param $option
      */
     public function arrayHandle($option) {
-        $this->data = $option;
+        $this->_option = $option;
     }
 
     /**
@@ -27,7 +27,7 @@ class Handler {
      */
     public function closureHandle($method) {
         $builder = new Builder();
-        $builder->data = & $this->data;
+        $builder->_option = & $this->_option;
         $method($builder);
     }
 
@@ -55,7 +55,7 @@ class Handler {
             default:$this->sugarHandle($args);break;
         }
 
-        return $this->data;
+        return $this->_option;
     }
 
     /**

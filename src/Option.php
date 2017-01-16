@@ -80,11 +80,7 @@ class Builder {
         if (!isset($args[0])) return $this;
 
         // 构造数据
-        if ($args[0] instanceof \Closure) {
-            $data = $class->get([$args[0]]);
-        } else {
-            $data = $class->get($args);
-        }
+        $data = $class->get($args);
 
         if (isset($args[1]) && $args[1]) {
             $this->option[$name][] = $data;

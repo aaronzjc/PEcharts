@@ -22,7 +22,7 @@ class Title extends Handler {
      */
     public function sugarHandle($params) {
         list($show, $title, $position) = $params;
-        $this->data = [
+        $this->_option = [
             'show' => $show,
             'title' => $title,
             'x' => $position?:'center',

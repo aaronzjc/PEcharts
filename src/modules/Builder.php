@@ -2,16 +2,13 @@
 namespace PEcharts\modules;
 
 class Builder {
-    public $data = [];
+    public $_option = [];
 
-    public function __construct($option = []) {
-        if (is_array($option) && $option) {
-            $this->data = $option;
-        }
+    public function __construct() {
     }
 
     public function __set($name, $val) {
-        $this->data[$name] = $val;
+        $this->_option[$name] = $val;
     }
 
     public function __call($name, $args) {
@@ -22,11 +19,11 @@ class Builder {
         if ($m instanceof \Closure) {
             $builder = new self();
             if ($f === true) {
-                $data = $this->data[$name]?:[];
+                $data = $this->_option[$name]?:[];
                 $index = isset($data)?count($data):0;
-                $builder->data = & $this->data[$name][$index];
+                $builder->option = & $this->_option[$name][$index];
             } else {
-                $builder->data = & $this->data[$name];
+                $builder->option = & $this->_option[$name];
             }
 
             $m($builder);
@@ -34,7 +31,7 @@ class Builder {
 
         // 如果是数组,则覆盖原数据.
         if (is_array($m)) {
-            $this->data = array_replace($this->data[$name], $m);
+            $this->option = array_replace($this->_option[$name], $m);
         }
 
         // 如果是字符串,则认为是调用系统方法进行处理.暂时没有考虑好

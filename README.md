@@ -20,6 +20,21 @@ Option依然是入口类.我将Option的第一层对象,即title,series,legend�
 
 ## 安装
 
+    composer require aaronzjc/pecharts
 
 ## 使用
+
+    $option = new \PEcharts\Option();
+    $arr = $option->init(function($option){
+    	$option->title = ['text' => '标题'];
+    	$option->series(function($series){
+    		$series->type = "line";
+    		$series->data = [1,2,3,4,5];
+    	}, true)->series(funciton($series){
+    		$series->type = "bar";
+    		$series->data = ['a','b','c'];
+    	}, true);
+    })->getJson();
+    
+    // $arr = {'title':{'text':'标题'},'series':[{'type':'line','data':[1,2,3,4,5]},{'type':'bar','data':['a','b','c']}]}
 
