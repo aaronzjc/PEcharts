@@ -23,14 +23,3 @@ Option依然是入口类.我将Option的第一层对象,即title,series,legend�
 
 ## 使用
 
-和以前有相似处,也有一些不同.
-
-    $option = new Option();
-    $option->title('标题','left')->legend([
-        'data' => [1,2,3,4,5]
-    ])->series(function($series){
-        $series->type = 'pie';
-        $series->name = ['text' => '测试'];
-        $series->data = [];
-    });
-
